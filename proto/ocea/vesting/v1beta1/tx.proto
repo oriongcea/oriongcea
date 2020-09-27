@@ -1,0 +1,21 @@
+syntax = "proto3";
+package ocea.vesting.v1beta1;
+
+import "gogoproto/gogo.proto";
+import "ocea/base/v1beta1/coin.proto";
+
+option go_package = "github.com/ocea/sdk/x/auth/vesting/types";
+
+// MsgCreateVestingAccount defines a message that enables creating a vesting
+// account.
+message MsgCreateVestingAccount {
+  option (gogoproto.equal) = true;
+
+  string   from_address                    = 1 [(gogoproto.moretags) = "yaml:\"from_address\""];
+  string   to_address                      = 2 [(gogoproto.moretags) = "yaml:\"to_address\""];
+  repeated ocea.base.v1beta1.Coin amount = 3
+      [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/ocea/sdk/types.Coins"];
+
+  int64 end_time = 4 [(gogoproto.moretags) = "yaml:\"end_time\""];
+  bool  delayed  = 5;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+package ocea.evidence.v1beta1;
+
+option go_package            = "github.com/ocea/sdk/x/evidence/types";
+option (gogoproto.equal_all) = true;
+
+import "gogoproto/gogo.proto";
+import "google/protobuf/any.proto";
+import "ocea_proto/ocea.proto";
+
+// MsgSubmitEvidence represents a message that supports submitting arbitrary
+// Evidence of misbehavior such as equivocation or counterfactual signing.
+message MsgSubmitEvidence {
+  option (gogoproto.equal)           = false;
+  option (gogoproto.goproto_getters) = false;
+
+  string              submitter = 1;
+  google.protobuf.Any evidence  = 2 [(ocea_proto.accepts_interface) = "Evidence"];
+}

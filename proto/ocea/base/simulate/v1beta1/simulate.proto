@@ -1,0 +1,33 @@
+syntax = "proto3";
+package ocea.base.simulate.v1beta1;
+
+import "google/api/annotations.proto";
+import "ocea/base/abci/v1beta1/abci.proto";
+import "ocea/tx/v1beta1/tx.proto";
+
+option go_package = "github.com/ocea/sdk/client/grpc/simulate";
+
+// SimulateService defines a gRPC service for simulating transactions.
+// It may also support querying and broadcasting in the future.
+service SimulateService {
+  // Simulate simulates executing a transaction for estimating gas usage.
+  rpc Simulate(SimulateRequest) returns (SimulateResponse) {
+    option (google.api.http).post = "/ocea/base/simulate/v1beta1/simulate";
+  }
+}
+
+// SimulateRequest is the request type for the SimulateServiceService.Simulate
+// RPC method.
+message SimulateRequest {
+  // tx is the transaction to simulate.
+  ocea.tx.v1beta1.Tx tx = 1;
+}
+
+// SimulateResponse is the response type for the
+// SimulateServiceService.SimulateRPC method.
+message SimulateResponse {
+  // gas_info is the information about gas used in the simulation.
+  ocea.base.abci.v1beta1.GasInfo gas_info = 1;
+  // result is the result of the simulation.
+  ocea.base.abci.v1beta1.Result result = 2;
+}
