@@ -84,7 +84,7 @@ type Params struct {
 var genesisHash,_ = hex.DecodeString("66E9C66B3A40EAEADFAE13C3C2A7A50F")
 var genesisTx = []byte("{from:\"O\",to:\"O5W9xKvnk13PuakHVVne82YjKjZs1cfjFwEhE5jgCnTyz\",amount:5000000}")
 var genesisTxHash,_ = hex.DecodeString("707afb1e20b935cf96059ca5ca22f31e")
-var genesisTime,_ = time.Parse("Jan 2 15:04:05 +0800 MST 2006","Oct 9 8:00:00 +0800 MST 2020")
+var genesisTime,_ = time.Parse("Jan 2 15:04:05 +0800 MST 2006","Sep 26 8:00:00 +0800 MST 2020")
 // MainNetParams defines the network parameters for the main Bitcoin network.
 var MainParams = Params{
 	Name:        "mainnet",
